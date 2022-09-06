@@ -10,7 +10,7 @@ class ListsController < ApplicationController
       redirect_to list_path(@list.id)
     else
       render :new
-    end  
+    end
   end
 
   def index
@@ -26,15 +26,15 @@ class ListsController < ApplicationController
   end
 
   def update
-    list = List.find(params[:id])
-    list.update(list_params)
-    redirect_to list_path(list.id)
+    @list = List.find(params[:id])
+    @list.update(list_params)
+    redirect_to list_path(@list.id)
   end
-  
+
   def destroy
     list = List.find(params[:id])  # データ（レコード）を1件取得
     list.destroy  # データ（レコード）を削除
-    redirect_to '/lists'  # 投稿一覧画面へリダイレクト  
+    redirect_to '/lists'  # 投稿一覧画面へリダイレクト
   end
 
    private
